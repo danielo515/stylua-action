@@ -55,10 +55,7 @@ function run() {
             let version = semver.clean(versionString);
             core.debug(`Set version: "${versionString}", resolved as ${version}`);
             let releases;
-            if (!version || versionString === '' || versionString === 'latest') {
-                if (versionString !== 'latest') {
-                    core.warning('No version provided, or version provided is malformed, using latest release version. We recommend pinning the version explicitly to handle changes in formatting');
-                }
+            if (!version || versionString === 'latest') {
                 releases = yield stylua_1.default.getReleases(token);
                 const latestVersion = stylua_1.default.getLatestVersion(releases);
                 if (!latestVersion) {
@@ -68,7 +65,7 @@ function run() {
             }
             // See if we already have the tool installed
             core.debug(`Looking for cached version of binary with version ${version}`);
-            const styluaDirectory = tc.find('stylua', version);
+            const styluaDirectory = tc.find('stylua', version !== null && version !== void 0 ? version : versionString);
             if (styluaDirectory) {
                 core.debug(`Found cached version of stylua: ${styluaDirectory}`);
                 core.addPath(styluaDirectory);
@@ -97,9 +94,6 @@ function run() {
                     yield (0, exec_1.exec)(`chmod +x ${extractedPath}/stylua`);
                 }
             }
-            const args = core.getInput('args');
-            core.debug(`Running stylua with arguments: ${args}`);
-            yield (0, exec_1.exec)(`stylua ${args}`);
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         }
         catch (error) {
