@@ -10,12 +10,10 @@ Installs the StyLua binary (from GitHub releases), and caches it. Any StyLua com
 
 ```yaml
 - uses: actions/checkout@v3
-- uses: JohnnyMorganz/stylua-action@v2
+- uses: danielo515/stylua-action@v2
   with:
     token: ${{ secrets.GITHUB_TOKEN }}
     version: latest # NOTE: we recommend pinning to a specific version in case of formatting changes
-    # CLI arguments
-    args: --check .
 ```
 
 ### Parameters
@@ -23,10 +21,6 @@ Installs the StyLua binary (from GitHub releases), and caches it. Any StyLua com
 #### `token` (Required)
 
 GitHub token. Required since the binary is downloaded from GitHub releases (to speed download)
-
-#### `args` (Required)
-
-The arguments to pass to the StyLua binary
 
 #### `version` (Required)
 

@@ -8,9 +8,6 @@ inputs:
   token:
     description: 'The GITHUB_SECRET token'
     required: true
-  args:
-    description: 'CLI Arguments to pass to StyLua'
-    required: true
   version:
     description: 'The version of StyLua to run. Use `latest` to pull the latest version'
     required: true
