@@ -3,7 +3,7 @@ description: 'GitHub Action to run StyLua, an opinionated Lua code formatter'
 author: 'JohnnyMorganz'
 branding:
   icon: code
-  color: black
+  color: orange
 inputs:
   token:
     description: 'The GITHUB_SECRET token'
